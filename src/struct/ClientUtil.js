@@ -21,7 +21,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {User}
      */
-    resolveUser(text, users, caseSensitive = false, wholeWord = false) {
+    resolveUser(text, users, caseSensitive = false, wholeWord = true) {
         return users.get(text) || users.find(user => this.checkUser(text, user, caseSensitive, wholeWord));
     }
 
@@ -33,7 +33,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Collection<Snowflake, User>}
      */
-    resolveUsers(text, users, caseSensitive = false, wholeWord = false) {
+    resolveUsers(text, users, caseSensitive = false, wholeWord = true) {
         return users.filter(user => this.checkUser(text, user, caseSensitive, wholeWord));
     }
 
@@ -45,7 +45,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes checking by name match full word only.
      * @returns {boolean}
      */
-    checkUser(text, user, caseSensitive = false, wholeWord = false) {
+    checkUser(text, user, caseSensitive = false, wholeWord = true) {
         if (user.id === text) return true;
 
         const reg = /<@!?(\d{17,19})>/;
@@ -74,7 +74,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {GuildMember}
      */
-    resolveMember(text, members, caseSensitive = false, wholeWord = false) {
+    resolveMember(text, members, caseSensitive = false, wholeWord = true) {
         return members.get(text) || members.find(member => this.checkMember(text, member, caseSensitive, wholeWord));
     }
 
@@ -86,7 +86,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Collection<Snowflake, GuildMember>}
      */
-    resolveMembers(text, members, caseSensitive = false, wholeWord = false) {
+    resolveMembers(text, members, caseSensitive = false, wholeWord = true) {
         return members.filter(member => this.checkMember(text, member, caseSensitive, wholeWord));
     }
 
@@ -98,7 +98,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes checking by name match full word only.
      * @returns {boolean}
      */
-    checkMember(text, member, caseSensitive = false, wholeWord = false) {
+    checkMember(text, member, caseSensitive = false, wholeWord = true) {
         if (member.id === text) return true;
 
         const reg = /<@!?(\d{17,19})>/;
@@ -130,7 +130,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Channel}
      */
-    resolveChannel(text, channels, caseSensitive = false, wholeWord = false) {
+    resolveChannel(text, channels, caseSensitive = false, wholeWord = true) {
         return channels.get(text) || channels.find(channel => this.checkChannel(text, channel, caseSensitive, wholeWord));
     }
 
@@ -142,7 +142,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Collection<Snowflake, Channel>}
      */
-    resolveChannels(text, channels, caseSensitive = false, wholeWord = false) {
+    resolveChannels(text, channels, caseSensitive = false, wholeWord = true) {
         return channels.filter(channel => this.checkChannel(text, channel, caseSensitive, wholeWord));
     }
 
@@ -154,7 +154,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes checking by name match full word only.
      * @returns {boolean}
      */
-    checkChannel(text, channel, caseSensitive = false, wholeWord = false) {
+    checkChannel(text, channel, caseSensitive = false, wholeWord = true) {
         if (channel.id === text) return true;
 
         const reg = /<#(\d{17,19})>/;
@@ -182,7 +182,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Role}
      */
-    resolveRole(text, roles, caseSensitive = false, wholeWord = false) {
+    resolveRole(text, roles, caseSensitive = false, wholeWord = true) {
         return roles.get(text) || roles.find(role => this.checkRole(text, role, caseSensitive, wholeWord));
     }
 
@@ -194,7 +194,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Collection<Snowflake, Role>}
      */
-    resolveRoles(text, roles, caseSensitive = false, wholeWord = false) {
+    resolveRoles(text, roles, caseSensitive = false, wholeWord = true) {
         return roles.filter(role => this.checkRole(text, role, caseSensitive, wholeWord));
     }
 
@@ -206,7 +206,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes checking by name match full word only.
      * @returns {boolean}
      */
-    checkRole(text, role, caseSensitive = false, wholeWord = false) {
+    checkRole(text, role, caseSensitive = false, wholeWord = true) {
         if (role.id === text) return true;
 
         const reg = /<@&(\d{17,19})>/;
@@ -234,7 +234,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Emoji}
      */
-    resolveEmoji(text, emojis, caseSensitive = false, wholeWord = false) {
+    resolveEmoji(text, emojis, caseSensitive = false, wholeWord = true) {
         return emojis.get(text) || emojis.find(emoji => this.checkEmoji(text, emoji, caseSensitive, wholeWord));
     }
 
@@ -246,7 +246,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Collection<Snowflake, Emoji>}
      */
-    resolveEmojis(text, emojis, caseSensitive = false, wholeWord = false) {
+    resolveEmojis(text, emojis, caseSensitive = false, wholeWord = true) {
         return emojis.filter(emoji => this.checkEmoji(text, emoji, caseSensitive, wholeWord));
     }
 
@@ -258,7 +258,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes checking by name match full word only.
      * @returns {boolean}
      */
-    checkEmoji(text, emoji, caseSensitive = false, wholeWord = false) {
+    checkEmoji(text, emoji, caseSensitive = false, wholeWord = true) {
         if (emoji.id === text) return true;
 
         const reg = /<a?:[a-zA-Z0-9_]+:(\d{17,19})>/;
@@ -286,7 +286,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Guild}
      */
-    resolveGuild(text, guilds, caseSensitive = false, wholeWord = false) {
+    resolveGuild(text, guilds, caseSensitive = false, wholeWord = true) {
         return guilds.get(text) || guilds.find(guild => this.checkGuild(text, guild, caseSensitive, wholeWord));
     }
 
@@ -298,7 +298,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes finding by name match full word only.
      * @returns {Collection<Snowflake, Guild>}
      */
-    resolveGuilds(text, guilds, caseSensitive = false, wholeWord = false) {
+    resolveGuilds(text, guilds, caseSensitive = false, wholeWord = true) {
         return guilds.filter(guild => this.checkGuild(text, guild, caseSensitive, wholeWord));
     }
 
@@ -310,7 +310,7 @@ class ClientUtil {
      * @param {boolean} [wholeWord=false] - Makes checking by name match full word only.
      * @returns {boolean}
      */
-    checkGuild(text, guild, caseSensitive = false, wholeWord = false) {
+    checkGuild(text, guild, caseSensitive = false, wholeWord = true) {
         if (guild.id === text) return true;
 
         text = caseSensitive ? text : text.toLowerCase();
