@@ -89,7 +89,9 @@ class ArgumentRunner {
             [ArgumentMatches.TEXT]: this.runText,
             [ArgumentMatches.CONTENT]: this.runContent,
             [ArgumentMatches.REST_CONTENT]: this.runRestContent,
-            [ArgumentMatches.NONE]: this.runNone
+            [ArgumentMatches.NONE]: this.runNone,
+            [ArgumentMatches.NOTLAST]: this.runNotLast,
+            [ArgumentMatches.LAST]: this.runLast,
         };
 
         const runFn = cases[arg.match];
@@ -320,6 +322,18 @@ class ArgumentRunner {
      */
     runNone(message, parsed, state, arg) {
         return arg.process(message, '');
+    }
+
+    runNotLast(message, parsed, state, arg) {
+        const index = arg.index == null ? 0 : arg.index;
+        const content = parsed.all.slice(index, -1).map(x => x.raw).join('').trim();
+        return arg.process(message, content);
+    }
+
+    runLast(message, parsed, state, arg) {
+        const index = arg.index == null ? 0 : arg.index;
+        const content = parsed.all.slice(-1).map(x => x.raw).join('').trim();
+        return arg.process(message, content);
     }
 
     /**
