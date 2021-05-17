@@ -8,7 +8,9 @@ module.exports = {
         TEXT: 'text',
         CONTENT: 'content',
         REST_CONTENT: 'restContent',
-        NONE: 'none'
+        NONE: 'none',
+        NOTLAST: "notLast",
+        LAST: "last",
     },
     ArgumentTypes: {
         STRING: 'string',
