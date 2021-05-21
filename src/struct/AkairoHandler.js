@@ -124,6 +124,7 @@ class AkairoHandler extends EventEmitter {
             : function findExport(m) {
                 if (!m) return null;
                 if (m.prototype instanceof this.classToHandle) return m;
+                if (m[Object.keys(m)[0]].prototype instanceof this.classToHandle) return m[Object.keys(m)[0]];
                 return m.default ? findExport.call(this, m.default) : null;
             }.call(this, require(thing));
 
