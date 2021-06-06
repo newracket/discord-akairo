@@ -11,6 +11,7 @@ module.exports = {
         NONE: 'none',
         NOTLAST: "notLast",
         LAST: "last",
+        WORDS: "words",
     },
     ArgumentTypes: {
         STRING: 'string',
