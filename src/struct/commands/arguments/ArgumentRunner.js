@@ -92,6 +92,7 @@ class ArgumentRunner {
             [ArgumentMatches.NONE]: this.runNone,
             [ArgumentMatches.NOTLAST]: this.runNotLast,
             [ArgumentMatches.LAST]: this.runLast,
+            [ArgumentMatches.WORDS]: this.runWords,
         };
 
         const runFn = cases[arg.match];
@@ -334,6 +335,17 @@ class ArgumentRunner {
         const index = arg.index == null ? 0 : arg.index;
         const content = parsed.all.slice(-1).map(x => x.raw).join('').trim();
         return arg.process(message, content);
+    }
+
+    async runWords(message, parsed, state, arg) {
+        const output = [];
+        const index = arg.index == null ? 0 : arg.index;
+        const content = parsed.all.map(x => x.raw)
+        for (const e of content) {
+          const v = await arg.process(message, e.trim());
+          output.push(v);
+        }
+        return output;
     }
 
     /**
