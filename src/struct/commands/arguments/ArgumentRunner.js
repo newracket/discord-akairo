@@ -345,7 +345,7 @@ class ArgumentRunner {
           const v = await arg.process(message, e.trim());
           output.push(v);
         }
-        return output;
+        return output.filter(e => e);
     }
 
     /**
